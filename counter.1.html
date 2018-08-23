@@ -28,14 +28,14 @@
 
         });
 
-
+//problem of not adding other element to items local storage
 
         document.querySelector('button').onclick = () => {
             //fetch last item add to itemsArray
         data = JSON.parse(localStorage.getItem('items'))
         let counter  = data[data.length-1];
         
-       
+        counter++; 
             //var or const???
 
         const li = document.createElement('li');
@@ -48,7 +48,7 @@
         //add item to local storage
         itemsArray.push(counter);
         localStorage.setItem('items',JSON.stringify(itemsArray));
-        counter++; 
+        
     
         };
     });
