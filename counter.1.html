@@ -4,14 +4,21 @@
         store counter
     </title>
     <script>
+        //one problem exist that data is lost on closing ,local storage is reset
+        let itemsArray = localStorage.getItem('items')?JSON.parse(localStorage.getItem('items')):[];
         
-        let itemsArray = [];
-        itemsArray[0]=0
+        if(itemsArray.length==0)
+        {
+            itemsArray[0]=0;
+        }
+
         localStorage.setItem('items',JSON.stringify(itemsArray));
         let data = JSON.parse(localStorage.getItem('items'));
 
-        //add initial value 0
+    
         
+        
+
             
 
         document.addEventListener('DOMContentLoaded',()=>{
