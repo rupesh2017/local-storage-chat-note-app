@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        store counter
+    </title>
+    <script>
+        
+        let itemsArray = [];
+        itemsArray[0]=0
+        localStorage.setItem('items',JSON.stringify(itemsArray));
+        let data = JSON.parse(localStorage.getItem('items'));
+
+        //add initial value 0
+        
+            
+
+        document.addEventListener('DOMContentLoaded',()=>{
+            //fetch last item add to itemsArray
+            
+        data.forEach(item =>{
+            //create li
+            const li = document.createElement('li');
+            //add value to li
+            li.innerHTML = item;
+            //add to DOM
+            document.querySelector('#task').append(li);
+
+
+        });
+
+
+
+        document.querySelector('button').onclick = () => {
+            //fetch last item add to itemsArray
+        data = JSON.parse(localStorage.getItem('items'))
+        let counter  = data[data.length-1];
+        
+       
+            //var or const???
+
+        const li = document.createElement('li');
+            //add value to li
+            li.innerHTML = counter;
+            //add to DOM
+            document.querySelector('#task').append(li);
+
+           
+        //add item to local storage
+        itemsArray.push(counter);
+        localStorage.setItem('items',JSON.stringify(itemsArray));
+        counter++; 
+    
+        };
+    });
+
+    </script>
+</head>
+<body>
+    <ul id="task">
+
+    </ul>
+    <button>click</button>
+</body>
