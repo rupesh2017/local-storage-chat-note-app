@@ -5,14 +5,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 //once connected,connect event is emitted
 
-    
+
+
 
     socket.on('connect',()=>{
         document.querySelector('#submit').onclick= ()=>{
-          const selection = document.querySelector('#task').value;
+         const selection = document.querySelector('#task').value;
+         const user = document.querySelector('#user').value;
+
+        
           
           //emit new event
-          socket.emit('submit text',{'selection':selection});
+          socket.emit('submit text',{'selection':selection,'user':user});
         
           return false;
         
@@ -24,10 +28,10 @@ document.addEventListener('DOMContentLoaded',()=>{
    
 
 
-    socket.on('announce text',data=>{
+    socket.on('announce text',(data)=>{
         const li = document.createElement('li');
         //mistake was here
-        li.innerHTML=`text is :${data.selection}`;
+        li.innerHTML=`text is here from  ${data.user}:${data.selection}`;
         //mistake was here
         document.querySelector('#tasks').append(li);
 

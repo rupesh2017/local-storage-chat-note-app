@@ -13,10 +13,14 @@ socketio=SocketIO(app)
 def index():
     return render_template("index.html")
 
+d={"a":1,"b":2}
 
 @socketio.on("submit text")
 def text(data):
-    selection= data["selection"]
-    emit("announce text",{"selection":selection},broadcast=True)
+    print(d)
+    selection = data["selection"]
+    user = data["user"]
+    
+    emit("announce text",{"selection":selection,"user":user},broadcast=True)
 
 
