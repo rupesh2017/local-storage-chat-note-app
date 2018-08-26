@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 //once connected,connect event is emitted
 
+    
 
     socket.on('connect',()=>{
-        document.querySelector('#new-task').onsubmit = ()=>{
+        document.querySelector('#submit').onclick= ()=>{
           const selection = document.querySelector('#task').value;
+          
           //emit new event
           socket.emit('submit text',{'selection':selection});
         
@@ -24,8 +26,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     socket.on('announce text',data=>{
         const li = document.createElement('li');
-        li.innerHTML(`${data.selection}`);
-        document.querySelector('#new-task').append('li');
+        //mistake was here
+        li.innerHTML=`text is :${data.selection}`;
+        document.querySelector('#tasks').append(li);
 
     });
 
