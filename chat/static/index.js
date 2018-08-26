@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         const li = document.createElement('li');
         //mistake was here
         li.innerHTML=`text is :${data.selection}`;
+        //mistake was here
         document.querySelector('#tasks').append(li);
 
     });
