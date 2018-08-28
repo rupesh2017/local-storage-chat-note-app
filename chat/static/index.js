@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+
     socket.on('connect',()=>{
         document.querySelector('#submit').onclick= ()=>{
          const selection = document.querySelector('#task').value;
          const user = document.querySelector('#user').value;
+         console.log(socket.id);
 
         
           
