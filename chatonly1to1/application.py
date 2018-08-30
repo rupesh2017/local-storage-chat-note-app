@@ -34,9 +34,11 @@ def text(data):
 def text(data): 
     selection = data["selection"]
     senduser = data["senduser"]
+    sid = userlist[senduser]
     
     
-    emit("announce message",{"selection":selection,"senduser":senduser},broadcast=True)
+    
+    emit("announce message",{"selection":selection,"senduser":senduser,"sid":sid},broadcast=True)
 
 
 

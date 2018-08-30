@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         };
         
         //onclick first then onchange does not work
+
+        //disable onclick until user is selected.
         document.querySelector('#add-user').onchange = function() {
             const  senduser = this.value;
             document.querySelector('#new-message').onclick=function(){
@@ -65,8 +67,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         const li = document.createElement('li');
         
         li.innerHTML=`${data.selection}`;
-        console.log('name of send user');
-        console.log(data.senduser);
+        console.log('name of senduser')
+        console.log(data.senduser)
+        console.log('select user socket id is')
+        console.log(data.sid)
         document.querySelector('#add-message').append(li);
 
 
