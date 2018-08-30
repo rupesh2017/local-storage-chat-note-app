@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>drop</title>
+    <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+
+        document.querySelector('#cars').onchange = function() {
+        document.querySelector('h1').innerHTML = this.value;
+};
+    });
+    
+    </script>
+    
+</head>
+<body>
+
+        <select id="cars">
+                <option>Saab</option>
+                <option>Honda</option>
+                <option>Volkswagen</option>
+              </select>
+              
+             <h1 id="result"></h1>
+    
+</body>
+</html>

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         
           
           //emit new event
-          socket.emit('submit text',{'selection':selection,'user':user});
+          socket.emit('submit text',{'selection':selection,'user':user,'socketid':socket.id});
         
           return false;
         
@@ -27,14 +27,15 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
-   
-
 
     socket.on('announce text',(data)=>{
         const li = document.createElement('li');
         //mistake was here
         li.innerHTML=`text is here from  ${data.user}:${data.selection}`;
         //mistake was here
+        console.log(data.userlist) //request.sid output
+
+
         document.querySelector('#tasks').append(li);
 
     });

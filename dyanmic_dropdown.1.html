@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <title>index</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+
+            document.querySelector('#submit').onclick=()=>{
+                
+
+                document.querySelectorAll('.merge').forEach((select)=>{
+                    const option =document.createElement('option');
+                    option.innerHTML=document.querySelector('#text-get').value;
+                    document.querySelector('.merge').append(option);
+
+                })
+
+                return false;
+
+            };
+
+           
+            
+
+
+          
+
+
+
+            
+        
+
+        });
+    </script>
+    <body>
+        <h1>HElLO</h1>
+        <select id="task" class="merge">
+            
+        </select>
+
+
+        <select id="task2" class="merge"> 
+            
+            </select>
+        <form>
+            <input type="text" id="text-get">
+            <input type="submit" id="submit">
+        </form>
+        
+        
+    </body>
+</head>

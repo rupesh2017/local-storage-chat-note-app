@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <title>index</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+
+            document.querySelector('#submit').onclick=()=>{
+                
+                const option =document.createElement('option');
+                
+                option.innerHTML=document.querySelector('#text-get').value;
+
+              
+
+
+                document.querySelector('#task').append(option);
+                document.querySelector('#task2').append(option);
+
+                return false;
+
+            };
+
+           document.querySelector('#hello').onChange=function(){
+               document.querySelector('h1').style.fontSize="120px";
+
+           };
+
+          
+
+
+
+            
+        
+
+        });
+    </script>
+    <body>
+        <h1>HElLO</h1>
+        <select id="task">
+            
+        </select>
+
+
+        <select id="task2">
+            
+            </select>
+        <form>
+            <input type="text" id="text-get">
+            <input type="submit" id="submit">
+        </form>
+        
+        <select id="hello">
+            <option>a</option>
+            <option>b</option>
+        </select>
+    </body>
+</head>

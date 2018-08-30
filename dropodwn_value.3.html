@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>drop</title>
+    <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+
+
+ document.querySelector('#cars').onchange = function() {
+        document.querySelector('h1').innerHTML = this.value;
+        document.querySelector('#submit').onclick=function(){
+        document.querySelector('h2').innerHTML = document.querySelector('#hello').value;
+            
+           return false;
+       };
+};
+
+    //    document.querySelector('h1').innerHTML='hi';
+
+       
+
+       
+    });
+    
+    </script>
+    
+</head>
+<body>
+
+        <select id="cars">
+                <option>Saab</option>
+                <option>Honda</option>
+                <option>Volkswagen</option>
+              </select>
+              
+             <h1 id="result"></h1>
+
+             <h2 id="moon"></h2>
+
+
+             <form>
+
+                <input type="text" id="hello">
+                <input type="submit" id="submit">
+             </form>
+
+             
+    
+</body>
+</html>
