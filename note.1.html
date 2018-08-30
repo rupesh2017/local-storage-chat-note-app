@@ -4,30 +4,23 @@
         <title>
             Webpage
         </title>
+	<style>
+	</
         <script>
             let notelist =localStorage.getItem('note')?JSON.parse(localStorage.getItem('note')):[];
             localStorage.setItem('note',JSON.stringify(notelist));
             let data = JSON.parse(localStorage.getItem('note'));
-
            
-
             function display(){ 
                data.forEach(element => {
                     const li = document.createElement('li');
-
                     li.innerHTML = element;
                     document.querySelector('#tasks').append(li);                   
                });
                }
-
-
             document.addEventListener('DOMContentLoaded',()=>{
-
             display();
-
             document.querySelector('#submit').disabled = true;
-
-
                 document.querySelector('#task').onkeyup = () =>{
                     if(document.querySelector('#task').value.length>0)
                     {
@@ -38,26 +31,39 @@
  
                     }
                 };
-
+	let count =0;
                 document.querySelector('#new-task').onsubmit = ()=>{
                     const li = document.createElement('li');
-                    li.innerHTML = document.querySelector('#task').value;
+	if(count ==0)
+	{
+                  li.style.cssText= 'text-align:left;list-style-type:none;';
+
+	count=1
+	}
+	else
+	{
+	li.style.cssText= 'text-align:right;list-style-type:none;background-color:#7ba6ed';
+	count = 0;
+	}
+
+	li.innerHTML = document.querySelector('#task').value;
+		
+		
+                  
+		
+	
+
 
                     document.querySelector('#tasks').append(li);
-                    
                     notelist.push(document.querySelector('#task').value);
                     localStorage.setItem('note',JSON.stringify(notelist));
-
                     
                     document.querySelector('#task').value='';
                     document.querySelector('#submit').disabled =true;
-
                     return false;
-
                 };
                 
             });
-
         </script>
     </head>
     <body>
