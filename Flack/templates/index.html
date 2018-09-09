@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flack</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded',()=>{
+
+                document.querySelector('#submit-channel').onclick=()=>{
+                    const option = document.createElement('option');
+                    option.innerHTML = document.querySelector('#channel-name').value;
+                    document.querySelector('#channel-list').append(option);
+                    //save server side
+                };
+            });
+        </script>
+    </head>
+    <style>
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 30px;
+        }
+        
+    </style>
+    <body>
+        <img src="C:\Users\Rupesh Kumar\Desktop\pop\local-storage-chat-note-app\Flack\static\POSITIVE (1).png" alt="flack" id="flack">
+
+        <!-- enter username and choose channel -->
+        
+        <div class="col-xs-1" align="center">
+                <form>
+                    <input type="text" id="new-user" autocomplete="off" autofocus placeholder="Username">
+                      
+                    <select id="channel-list">
+                        
+                    </select>
+                    <input type="submit" id="submit-user">
+                </form>
+                
+        </div>
+
+        <!-- //save and load index page -->
+            <!-- <form action="url_for()> -->
+                    <div>
+                            <h2>PopUp Create Channel</h2>
+                            <input type="text" id="channel-name" autocomplete="off" placeholder="Channelname">
+                            <input type="submit" id="submit-channel">
+            
+                        </div>
+            <!-- </form> -->
+       
+    </body>
+</html>
