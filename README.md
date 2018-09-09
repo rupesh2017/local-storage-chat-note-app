@@ -3,7 +3,7 @@
 
 https://rupesh2017.github.io/testing/counter.1.html
 
-#
+#available
 1)broadcast
 2)private chat
 3)room or channel or group
