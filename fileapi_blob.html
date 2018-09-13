@@ -16,9 +16,9 @@
                 {
                     var reader = new FileReader();
                     reader.addEventListener('loadend',function(){
-                        console.log(reader);
+                        
                     document.querySelector('#textdisplay').innerHTML = reader.result;
-                    var myBlob = new Blob(reader.result)
+                    var myBlob = new Blob([reader.result])
                     console.log(myBlob);
                     });
                     reader.readAsText(file);  
