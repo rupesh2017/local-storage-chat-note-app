@@ -1,0 +1,25 @@
+
+
+<html>
+        <head>
+            <title>upload</title>
+            <script>
+                document.addEventListener('DOMContentLoaded',()=>{
+        document.querySelector('#myfiles').onchange = function(){
+        var  fileInput = document.querySelector('#myfiles');
+        var files = fileInput.files;
+        //blob create
+        var file_blob =  new Blob(files)
+        alert(file_blob); 
+    
+        }
+    });
+            </script>
+        </head>
+        <body>
+                
+        <input id="myfiles" multiple type="file">
+                   
+                    
+        </body>
+    </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vote</title>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded',()=>{
+                document.querySelector('#submit-file').onchange = ()=>{
+                var  fileInput = document.querySelector('#submit-file');
+                var files = fileInput.files;
+                alert(files.length); 
+
+                }
+            });
+        </script>
+        
+    </head>
+    <body>
+    <ul id="tasks">
+    </ul>
+    <form id="new-task">
+        <input type="text" autocomplete="off" autofocus id="user" placeholder="username"> 
+        <input type="text" autocomplete="off" autofocus id="room" placeholder="room">
+
+        <input type="submit" id="submit" value="join">
+      
+    </form> 
+
+    
+    <form id="file-upload">
+        <input id="myfiles" multiple type="file">
+        <input type="submit" id="submit-file" value="upload">
+    </form>
+    
+
+    </body>
+</html>

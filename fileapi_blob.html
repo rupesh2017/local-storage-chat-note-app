@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+
+            document.querySelector('#myfiles').onchange=function(){
+                var file = document.querySelector('#myfiles').files[0];
+                var file_type = "text/plain";
+
+                if(file.type.match(file_type))
+                {
+                    var reader = new FileReader();
+                    reader.addEventListener('loadend',function(){
+                        console.log(reader);
+                    document.querySelector('#textdisplay').innerHTML = reader.result;
+                    var myBlob = new Blob(reader.result)
+                    console.log(myBlob);
+                    });
+                    reader.readAsText(file);  
+
+                }
+                else
+                {
+                    document.querySelector('#textdisplay').innerHTML = 'file not supported';
+                }
+
+            }
+
+        });
+    </script>
+</head>
+<body>
+
+
+    <input id="myfiles" multiple type="file">
+    <div id="textdisplay"></div>
+</body>
+</html>

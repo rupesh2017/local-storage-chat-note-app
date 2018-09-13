@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>upload</title>
+        <script>
+            document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelector('#submit-file').onclick = ()=>{
+    
+        var  fileInput = document.querySelector('#myfiles');
+        var files = fileInput.files;
+        alert(files[0].name); 
+    }    
+        
+    
+});
+        </script>
+    </head>
+    <body>
+            <form id="file-upload">
+                    <input id="myfiles" multiple type="file">
+                    <input type="submit" id="submit-file" value="upload">
+                </form>
+                
+    </body>
+</html>

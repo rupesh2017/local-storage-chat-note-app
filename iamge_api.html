@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>File API</title>
+
+  <script>
+
+      document.addEventListener('DOMContentLoaded',()=>{
+
+document.querySelector('#fileInput').onchange=function(){
+        var file = document.querySelector('#fileInput').files[0];
+        var image_type = /image.*/;
+
+        if(file.type.match(image_type))
+        {
+            var reader = new FileReader();
+            reader.addEventListener('loadend',()=>{
+                fileDisplayArea.innerHTML = "";
+
+                var img = new Image(width="500");
+                img.src = reader.result;
+                fileDisplayArea.appendChild(img);
+        });
+        reader.readAsDataURL(file);	
+        }
+        else {
+  fileDisplayArea.innerHTML = "File not supported!";
+}
+        
+}
+      });
+  </script>
+</head>
+<body>
+  <div id="page-wrapper">
+
+    <h1>Image File Reader</h1>
+    <div>
+      Select an image file: 
+     
+
+      <input id="fileInput" type="file">
+    </div>
+    <div id="fileDisplayArea"></div>
+
+  </div>
+
+  
+</body>
+</html>
