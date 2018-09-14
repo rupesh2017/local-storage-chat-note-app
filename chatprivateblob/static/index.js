@@ -10,16 +10,23 @@ document.addEventListener('DOMContentLoaded',()=>{
           return false;
         
         };
-    
+        
+
+            document.querySelector('#add-user').onchange = function() {
+                const  senduser = this.value;
+                console.log(senduser);
             document.querySelector('#myfiles').onchange=function(){
                 var file = document.querySelector('#myfiles').files[0];
                 var file_type = "text/plain";
-                var myblob =  new Blob(file);
+                var myblob =  new Blob([file]);
+                console.log(myblob);
     
                 if(file.type.match(file_type))
                 {
+                    
+                    console.log('emitting file')
                     socket.emit('submit file',{'selection':myblob,'senduser':senduser});
-
+                   
     
                 }
                 else
@@ -29,6 +36,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }
     
             }
+        }
 
         
     });
@@ -47,16 +55,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
 
 
-    socket.on('annonce file',(data)=>{
-        const div = document.createElement('div');
-        var reader = new FileReader();
-        reader.addEventListener('loadend',function(){
+    socket.on('announce file',(data)=>{
+        console.log('reading file')
+        
+        console.log(data.selection);
+    document.querySelector('#textdisplay').innerHTML= data.selection;
+    
 
-        div.innerHTML = reader.result;
-
-        });
-        reader.readAsText(file);  
-    })
+        
+        
+    });
      
 
     

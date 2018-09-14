@@ -20,38 +20,7 @@
             }
         </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded',()=>{
-
-        document.querySelector('#myfiles').onchange=function(){
-            var file = document.querySelector('#myfiles').files[0];
-            var file_type = "text/plain";
-
-            if(file.type.match(file_type))
-            {
-                var reader = new FileReader();
-                reader.addEventListener('loadend',function(){
-                document.querySelector('#textdisplay').innerHTML = reader.result;
-
-                });
-                reader.readAsText(file);  
-
-            }
-            else
-            {
-                document.querySelector('#textdisplay').innerHTML = 'file not supported';
-            }
-
-        }
-
-    });
-</script>
 </head>
-
-
-
-
-  
     <body>
 
         <!-- user name -->

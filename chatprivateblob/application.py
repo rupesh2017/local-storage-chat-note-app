@@ -31,6 +31,7 @@ def text(data):
 @socketio.on("submit file")
 def image(data): 
     selection = data["selection"]
+    print(selection)
     senduser = data["senduser"]
     sid = userlist[senduser]
     
@@ -39,7 +40,7 @@ def image(data):
     emit("announce file",{"selection":selection,"senduser":senduser,"sid":sid},room=sid)
 
 
-
+   
 
 
 
