@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded',()=>{
                 console.log(senduser);
             document.querySelector('#myfiles').onchange=function(){
                 var file = document.querySelector('#myfiles').files[0];
-                var file_type = "text/plain";
+                var image_type = /image.*/;
                 var myblob =  new Blob([file]);
                 console.log(myblob);
     
-                if(file.type.match(file_type))
+                if(file.type.match(image_type))
                 {
                     
                     console.log('emitting file')
@@ -58,18 +58,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     socket.on('announce file',(data)=>{
         console.log('reading file')
 
-        const li = document.createElement('li');
 
         var blob = new Blob([data.selection]);
-        
+        console.log(blob);
         var reader = new FileReader();
         reader.onloadend = function(){
+            
+            var img = new Image(width="500");
+            img.src = reader.result;
+            fileDisplayArea.appendChild(img);
 
-            div.innerHTML= reader.result;
-            document.querySelector('#file-list').append(li);
-
-        };
-        reader.readAsText(blob);
+        };  
+        reader.readAsDataURL(blob);	
 
         
     

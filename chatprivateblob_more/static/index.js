@@ -58,15 +58,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     socket.on('announce file',(data)=>{
         console.log('reading file')
 
-        const li = document.createElement('li');
 
         var blob = new Blob([data.selection]);
-        
+        console.log(blob);
         var reader = new FileReader();
         reader.onloadend = function(){
 
-            div.innerHTML= reader.result;
-            document.querySelector('#file-list').append(li);
+            document.querySelector('#textdisplay').innerHTML= reader.result;
 
         };
         reader.readAsText(blob);
