@@ -69,12 +69,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             fileDisplayArea.appendChild(img);
 
         };  
-        reader.readAsDataURL(blob);	
-
-        
-    
-
-        
+        reader.readAsDataURL(blob);	         
         
     });
      
