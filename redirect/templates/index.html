@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        
+    </head>
+    <body>
+    <form id="new-task" action="{{ url_for('chat') }}" method="post">
+        <input type="text" autocomplete="off" autofocus id="user" placeholder="username"> 
+        <input type="text" autocomplete="off" autofocus id="room" placeholder="room">
+        <input type="submit" id="submit" value="join">     
+    </form> 
+    </body>
+</html>

@@ -5,7 +5,7 @@
             Webpage
         </title>
 	<style>
-	</
+	
         <script>
             let notelist =localStorage.getItem('note')?JSON.parse(localStorage.getItem('note')):[];
             localStorage.setItem('note',JSON.stringify(notelist));
@@ -48,10 +48,6 @@
 
 	li.innerHTML = document.querySelector('#task').value;
 		
-		
-                  
-		
-	
 
 
                     document.querySelector('#tasks').append(li);
