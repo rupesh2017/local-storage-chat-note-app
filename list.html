@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        document.querySelector("#submit").onclick = (event)=>{
+  const li = document.createElement('li');
+        };
+    
+  document.querySelectorAll("li").addEventListener('click', function(){
+    console.log('You have clicked: ',this.textContent);
+  });
+
+  li.innerHTML = document.querySelector('#message').value;
+  document.querySelector('#add-message').append(li);  
+  event.preventDefault();
+
+    });
+    </script>
+    
+</head>
+<body>
+
+        <ul id="add-message">
+
+            </ul>
+
+            <ul id="add-message2">
+                <li>ab</li>
+                <li>ss</li>
+                <li>sss</li>
+            </ul>
+
+            <ul id="add-message3">
+              <li>abc</li>
+              <li>ssw</li>
+              <li>ssst</li>
+          </ul>
+            
+            
+            
+            <form>
+              <input type="text" id="message">
+              <input type="submit" id="submit">
+            </form>
+    
+</body>
+</html>
