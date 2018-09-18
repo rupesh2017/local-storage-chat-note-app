@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        
+        document.addEventListener('DOMContentLoaded',()=>{
+    
+
+        // and don't forget of the loop here ↓↓↓
+        for (let li of document.querySelectorAll("#add-message li, #add-message2 li")) {
+            // here ↓↓↓ you should add event listeners to list items one by one
+            li.addEventListener('click', function() {
+                console.log('You have clicked', this.textContent);
+            });
+        }
+
+    });
+
+    </script>
+
+</head>
+<body>
+
+       
+            
+            <ul id="add-message">
+            </ul>
+            
+            <ul id="add-message2">
+                <li>ab</li>
+                <li>ss</li>
+                <li>sss</li>
+            </ul>
+            
+            <ul id="add-message3">
+                <li>abc</li>
+                <li>ssw</li>
+                <li>ssst</li>
+            </ul>
+    
+</body>
+</html>
