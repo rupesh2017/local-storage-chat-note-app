@@ -47,7 +47,8 @@ def on_join(data):
     userlist[username]=request.sid
     print(users)
     print(channel)
-    emit('chat',{'username':username},room=room)
+    print(request.sid)
+    emit('chat',{'username':username,'users':users,'channel':channel},room=room)
    
 
 

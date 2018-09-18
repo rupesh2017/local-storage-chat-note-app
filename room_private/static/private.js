@@ -7,21 +7,21 @@ document.addEventListener('DOMContentLoaded',()=>{
     socket.on('connect',()=>{
         document.querySelector('#submit-user').onclick= ()=>{
          const user = document.querySelector('#user').value;
+         
           socket.emit('submit user',{'user':user});      
           return false;
         
         };
         
     
-        document.querySelector('#add-user').onchange = function() {
-            const  senduser = this.value;
+    
             document.querySelector('#new-message').onclick=function(){
             
                 const selection = document.querySelector('#message').value;
                 socket.emit('submit message',{'selection':selection,'senduser':senduser});
                 return false;
             };
-            };    
+               
     });
 
     socket.on('announce user',(data)=>{

@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
-    //get room and username using localstorage
+    
 
     socket.on('connect',()=>{
         socket.emit('join',{'user':storeduser,'room':storedroom});   
         document.querySelector('#message-submit').onclick = ()=>{
             const msg = document.querySelector('#message').value;
             socket.emit('message',{'user':storeduser,'message':msg,'room':storedroom});
-            
+
             console.log(storedroom);
             return false;
         }
@@ -36,12 +36,11 @@ document.addEventListener('DOMContentLoaded',()=>{
                 socket.emit('submit file',{'selection':'file not supported'});
 
             }
-
         }
 
 
         
-           
+                 
     });
 
     socket.on('chat',(data)=>{
@@ -49,7 +48,24 @@ document.addEventListener('DOMContentLoaded',()=>{
         console.log('welcome to chat')
          const li = document.createElement('li');
          li.innerHTML=`${data.username} is online`
-         document.querySelector('#tasks').append(li);    
+         document.querySelector('#tasks').append(li);   
+                 
+         
+         const x = data.users;
+         const y= data.channel;
+         
+         x.forEach(element => {
+        const list = document.createElement('li');
+        list.innerHTML = element;
+        document.querySelector('#add-users').append(list);  
+        });
+
+        y.forEach(element => {
+            const list2 = document.createElement('li');
+            list2.innerHTML = element;
+            document.querySelector('#add-channels').append(list2);  
+            });
+         
         });
 
 

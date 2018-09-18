@@ -7,15 +7,6 @@
         
     </head>
     <script>
-        
-        document.addEventListener('DOMContentLoaded',()=>{
-
-            document.querySelector('li').addEventListener('click',function(){
-            console.log('You have clicked: ',this.textContent);
-        
-        });
-
-        });
        
        
         
@@ -33,18 +24,15 @@
         <div id="fileDisplayArea"></div>
   
         
+
         
-        <ul>
-            {% for room in channel %}
-                <li>{{ room }}</li>
-            {% endfor %}
+      <ul id="add-channels">
+        
       </ul>
 
 
-        <ul>
-            {% for user in users %}
-            <li> {{ user }}</li>
-            {% endfor %}
+        <ul id="add-users">
+            
         </ul>
 
         <hr>

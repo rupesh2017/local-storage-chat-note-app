@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<script>
+    
+document.addEventListener('DOMContentLoaded',()=>{
+    x =['apple','mango','stawberry'];
+    console.log(x);
+x.forEach(element => {
+  const li = document.createElement('li');
+  li.innerHTML = element;
+  document.querySelector('#add-user').append(li);  
+});
+
+});
+</script>
+<body>
+<ul id="add-user">
+
+
+</ul>
+</body>
+</html>
