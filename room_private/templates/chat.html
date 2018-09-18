@@ -8,6 +8,25 @@
     </head>
     <script>
        
+
+        document.addEventListener('DOMContentLoaded',()=>{
+    
+    document.querySelector("body").addEventListener('click', function(ev){
+    var tN = ev.target.tagName.toLowerCase();
+    if(tN!="li") return;
+    var ul = ev.target.parentNode,
+        uid = ul.id;
+    if(uid.indexOf("add-users")!=0) return;
+    var li=ev.target;
+    console.log(li.textContent);
+    localStorage.setItem('usersid',li.textContent);
+    window.location="http://localhost:5000/private"
+
+  });
+
+    });
+        
+      
        
         
     </script>
