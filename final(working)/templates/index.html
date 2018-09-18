@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+   <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            
+            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+            
+            const storeduser = localStorage.getItem('user');
+            const storedroom = localStorage.getItem('room');
+            socket.on('connect',()=>{
+                console.log(storeduser);
+                if(localStorage.getItem('user'))
+                {
+                    console.log(localStorage.getItem('user'));
+                    console.log('running if');
+                    console.log(storeduser);
+                    socket.emit('join',{'user':storeduser,'room':storedroom});
+                    window.location="http://localhost:5000/chat"
+                }
+                else
+                {
+                    console.log('running else');
+                    console.log(storedroom);
+                    document.querySelector('#submit').onclick =() =>{
+                    const user= document.querySelector('#user').value;
+                    const room = document.querySelector('#room').value;
+                    localStorage.setItem('user',user);
+                    localStorage.setItem('room',room);
+                    socket.emit('join',{'user':storeduser,'room':storedroom});
+                    window.location="http://localhost:5000/chat"
+                    return false;
+                    }        
+                }
+               });
+        });
+        
+    </script>
+    <style>
+    img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 30px;
+    }
+
+    form {
+  text-align: center;
+}
+    </style>
+        
+    </head>
+    <body>
+
+    <img src="{{url_for('static', filename='POSITIVE (1).png')}}" alt="flack" id="flack">
+
+
+    <div>
+    <form id="new-task">
+        <input type="text" autocomplete="off" autofocus id="user" placeholder="username"> 
+        <input type="text" autocomplete="off" autofocus id="room" placeholder="room">
+        <input type="submit" id="submit" value="join">     
+    </form> 
+    </div>
+
+    </body>
+</html>
