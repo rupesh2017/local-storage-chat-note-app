@@ -1,0 +1,61 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector("#submit").onclick = (event) => {
+        const li = document.createElement('li');
+        li.innerHTML = document.querySelector('#message').value;
+        document.querySelector('#add-message').append(li);
+        event.preventDefault();
+        // note the lines added here ↓↓↓
+        li.addEventListener('click', function() {
+                console.log('You have clicked', this.textContent);
+            });
+
+    }
+        // add an item into the second list
+        document.querySelector("#submit2").onclick = (event) => {
+        const li2 = document.createElement('li');
+        li2.innerHTML = document.querySelector('#message2').value;
+        document.querySelector('#add-message2').append(li2);
+        event.preventDefault();
+        // note the lines added here ↓↓↓
+        li2.addEventListener('click', function() {
+                console.log('You have clicked', this.textContent);
+            });
+    };
+
+    // and don't forget the loop here ↓↓↓
+   
+});
+
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="message">
+        <input type="submit" id="submit">
+    </form>
+
+
+    <form>
+            <input type="text" id="message2">
+            <input type="submit" id="submit2">
+        </form>
+    
+    <ul id="add-message">
+    </ul>
+    
+    <ul id="add-message2">
+        
+    </ul>
+    
+    
+</body>
+</html>
