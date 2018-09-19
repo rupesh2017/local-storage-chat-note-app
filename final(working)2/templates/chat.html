@@ -39,6 +39,7 @@
     roomid = li.textContent;
     console.log('page chat')
     console.log(roomid);
+    
     socket.on('connect',()=>{
         socket.emit('load message',{'room':roomid})
     });
@@ -66,7 +67,50 @@
     </script>
 
     <style>
-    
+    .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.sidenav2 li ,.sidenav li{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav1 li:hover,.sidenav2 li:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+.sidenav2 {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
     </style>
 
     <body>
@@ -75,16 +119,17 @@
     
                   
     <div>
-            <div>
+        <div class="sidenav">
                     <ul id="add-channels">
             
                     </ul>
             </div>
       
-        <div>
+            <div class="main">
             <div>
                     <ul id="tasks">
                         </ul>
+                        <div id="fileDisplayArea"></div>   
             </div>
             <div>
                     <form id="message-task">
@@ -94,11 +139,11 @@
                                                    
                                               
                             <input id="myfiles" multiple type="file">
-                            <div id="fileDisplayArea"></div>     
+                              
             </div>          
         </div>
 
-        <div>
+        <div class="sidenav2">
                
                 <ul id="add-users">
                 </ul>            
