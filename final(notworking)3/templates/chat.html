@@ -13,7 +13,9 @@
         
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
-
+// not working  now 
+ //and with # add -users it is taking all li
+            
     for (let li of document.querySelectorAll("#add-users li")) {
         li.addEventListener('click', function() {
             console.log('You have clicked', this.textContent);
@@ -22,6 +24,8 @@
            // window.location="http://localhost:5000/private"
         });
     }
+            
+            // not working 
 
 
     for (let li of document.querySelectorAll("#add-channels li")) {
