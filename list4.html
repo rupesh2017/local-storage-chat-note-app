@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+
+    for (let li of document.querySelectorAll("#add-message2 li")) {
+        li.addEventListener('click', function() {
+            console.log('You have clicked', this.textContent);
+        });
+    }
+
+    for (let li of document.querySelectorAll("#add-message3 li")) {
+        li.addEventListener('click', function() {
+            console.log('You have clicked', this.textContent);
+        });
+    }
+
+
+});
+
+</script>
+<body>
+    
+    <ul id="add-message2">
+        <li>ab2</li>
+        <li>ss2</li>
+        <li>sss2</li>
+    </ul>
+    
+    <ul id="add-message3">
+        <li>abc3</li>
+        <li>ssw3</li>
+        <li>ssst3</li>
+    </ul>
+</body>
+</html>

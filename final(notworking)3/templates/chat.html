@@ -14,54 +14,25 @@
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
 
-    document.querySelector("body").addEventListener('click', function(ev){
-    var tN = ev.target.tagName.toLowerCase();
-    if(tN!="li") return;
-    var ul = ev.target.parentNode,
-        uid = ul.id;
-    if(uid.indexOf("add-users")!=0) return;
-    var li=ev.target;
-    console.log(li.textContent);
-    localStorage.setItem('usersid',li.textContent);
-    window.location="http://localhost:5000/private"
-
-  });
-
-
-  document.querySelector("body").addEventListener('click', function(ev){
-    var tN = ev.target.tagName.toLowerCase();
-    if(tN!="li") return;
-    var ul = ev.target.parentNode,
-        uid = ul.id;
-    if(uid.indexOf("add-channels")!=0) return;
-    var li=ev.target;
-    //get channel name and load that channel name message
-    roomid = li.textContent;
-    console.log('page chat')
-    console.log(roomid);
-    
-    socket.on('connect',()=>{
-        socket.emit('load message',{'room':roomid})
-    });
-
-    socket.on('unload ',(data)=>{
-        //clear space
-    document.querySelector('#tasks').innerHTML ='';
-    const z  = data.msg;
-    console.log(z);
-
-     z.forEach(element => {
-        const list = document.createElement('li');
-        list.innerHTML = element;
-        document.querySelector('#add-users').append(list);  
+    for (let li of document.querySelectorAll("#add-users li")) {
+        li.addEventListener('click', function() {
+            console.log('You have clicked', this.textContent);
+            localStorage.setItem('usersid',this.textContent);
+            //private channel need to be created
+           // window.location="http://localhost:5000/private"
         });
+    }
 
-// see if it is reduntant
+
+    for (let li of document.querySelectorAll("#add-channels li")) {
+        li.addEventListener('click', function() {
+            console.log('You have clicked', this.textContent);
+           
+            
     });
+};
 
-  });
-
-
+    
     });
         
     </script>
@@ -74,7 +45,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color:#6c639b;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -84,7 +55,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color:white;
     display: block;
 }
 
@@ -105,11 +76,14 @@
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
+    background-color:#6c639b;
     overflow-x: hidden;
     padding-top: 20px;
 }
 
+h2{
+    color:whitesmoke;
+}
 
     </style>
 
@@ -120,8 +94,9 @@
                   
     <div>
         <div class="sidenav">
+                <h2>Channel</h2>
                     <ul id="add-channels">
-            
+                            
                     </ul>
             </div>
       
@@ -129,7 +104,7 @@
             <div>
                     <ul id="tasks">
                         </ul>
-                        <div id="fileDisplayArea"></div>   
+                        <!-- <div id="fileDisplayArea"></div>    -->
             </div>
             <div>
                     <form id="message-task">
@@ -144,8 +119,9 @@
         </div>
 
         <div class="sidenav2">
-               
+               <h2>Users</h2>
                 <ul id="add-users">
+                    
                 </ul>            
             
         </div>

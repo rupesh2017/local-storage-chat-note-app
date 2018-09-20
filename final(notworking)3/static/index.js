@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded',()=>{
    
         document.querySelector('#message-submit').onclick = ()=>{
             const msg = document.querySelector('#message').value;
+            document.querySelector('#message').value='';
             socket.emit('message',{'user':storeduser,'message':msg,'room':storedroom});
             console.log(storedroom);
             return false;
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         reader.onloadend = function(){      
             var img = new Image(width="500");
             img.src = reader.result;
-            fileDisplayArea.appendChild(img);
+            tasks.appendChild(img);
 
         };  
         reader.readAsDataURL(blob);	         
