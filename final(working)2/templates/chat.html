@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>chat</title>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src="{{ url_for('static',filename='index.js') }}"></script>
+        
+    </head>
+    <script>
+       const storeduser = localStorage.getItem('user');
+       const storedroom = localStorage.getItem('room');
+
+        document.addEventListener('DOMContentLoaded',()=>{
+        
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+    document.querySelector("body").addEventListener('click', function(ev){
+    var tN = ev.target.tagName.toLowerCase();
+    if(tN!="li") return;
+    var ul = ev.target.parentNode,
+        uid = ul.id;
+    if(uid.indexOf("add-users")!=0) return;
+    var li=ev.target;
+    console.log(li.textContent);
+    localStorage.setItem('usersid',li.textContent);
+    window.location="http://localhost:5000/private"
+
+  });
+
+
+  document.querySelector("body").addEventListener('click', function(ev){
+    var tN = ev.target.tagName.toLowerCase();
+    if(tN!="li") return;
+    var ul = ev.target.parentNode,
+        uid = ul.id;
+    if(uid.indexOf("add-channels")!=0) return;
+    var li=ev.target;
+    //get channel name and load that channel name message
+    roomid = li.textContent;
+    console.log('page chat')
+    console.log(roomid);
+    
+    
+    socket.emit('join',{'user':storeduser,'room':roomid});
+
+    document.querySelector('#add-channels').innerHTML ='';
+    document.querySelector('#add-users').innerHTML ='';
+
+    socket.emit('load message',{'room':roomid});
+ 
+        console.log('trying to load new channel')
+
+    socket.on('unload message',(data)=>{
+        //clear space
+    console.log('unloading now');
+    document.querySelector('#tasks').innerHTML ='';
+    
+
+    
+    const z  = data.msg;
+    console.log(z);
+
+     z.forEach(element => {
+        const list3 = document.createElement('li');
+        console.log(element);
+        list3.innerHTML = element;
+        document.querySelector('#tasks').append(list3);  
+        });
+
+    });
+  });
+
+
+
+});
+        
+    </script>
+
+    <style>
+    .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.sidenav2 li ,.sidenav li{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav li:hover,.sidenav2 li:hover{
+    color: #f1f1f1;
+}
+
+
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+.sidenav2 {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+    </style>
+
+    <body>
+
+    
+    
+                  
+    <div>
+        <div class="sidenav">
+                    <ul id="add-channels">
+                        
+                    </ul>
+            </div>
+      
+            <div class="main">
+            <div>
+                    <ul id="tasks">
+                        </ul>
+                         
+            </div>
+            <div>
+                    <form id="message-task">
+                            <input type="text" autocomplete="off" id="message" placeholder="enter your message">
+                            <input type="submit" id="message-submit" value="send">                    
+                            </form>
+                                                   
+                                              
+                            <input id="myfiles" multiple type="file">
+                              
+            </div>          
+        </div>
+
+        <div class="sidenav2">
+               
+                <ul id="add-users">
+                </ul>            
+            
+        </div>
+
+    </div>
+
+
+    </body>
+</html>
